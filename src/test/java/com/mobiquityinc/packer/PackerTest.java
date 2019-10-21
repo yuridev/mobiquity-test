@@ -3,6 +3,7 @@ package com.mobiquityinc.packer;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.mobiquityinc.exception.APIException;
@@ -15,11 +16,11 @@ public class PackerTest {
 	}
 
 	@Test
-	public void testPacker() {
+	public void testPackerWithSuccesExecution() {
 		String result;
 		try {
 			
-			String path = getResourceFolder() + "/items1.txt";
+			String path = getResourceFolder() + "/items.txt";
 			result = Packer.pack(path);
 			System.out.println(result);
 		} catch (FileNotFoundException | APIException e) {
@@ -29,9 +30,24 @@ public class PackerTest {
 	}
 
 	@Test
-	public void testPackerWithItemBadFomarttely() throws FileNotFoundException, APIException {
-		Packer.pack(getResourceFolder() + "/itemsWithBadFormatedNumbers.txt");
-		
-		
+	public void testPackerWithPriceNumberBadFormatation() throws FileNotFoundException, APIException {
+		Assertions.assertThrows(APIException.class, () -> {
+			Packer.pack(getResourceFolder() + "/itemsWithBadFormatedPriceNumber.txt.txt");
+		});
+	}
+	
+	
+	@Test
+	public void testPackerWithWeightNumberBadFormatation() throws FileNotFoundException, APIException {
+		Assertions.assertThrows(APIException.class, () -> {
+			Packer.pack(getResourceFolder() + "/itemsWithBadFormatedWeightNumber.txt.txt");
+		});
+	}
+	
+	@Test
+	public void testPackerWithBagLimitMoreThan100() throws FileNotFoundException, APIException {
+		Assertions.assertThrows(APIException.class, () -> {
+			Packer.pack(getResourceFolder() + "/itemsWithBagLimitMoreThan100.txt");
+		});
 	}
 }

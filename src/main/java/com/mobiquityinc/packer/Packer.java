@@ -41,6 +41,8 @@ public class Packer {
 					
 					formatBagOutput(result, limit, bestBag);
 					
+				} else {
+					throw new APIException("Package limit should be less than 100.");
 				}
 	
 			}
