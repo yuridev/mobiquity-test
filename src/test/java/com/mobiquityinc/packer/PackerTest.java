@@ -23,7 +23,7 @@ public class PackerTest {
 			result = Packer.pack(path);
 			System.out.println(result);
 		} catch (FileNotFoundException | APIException e) {
-			
+			e.printStackTrace();
 		}
 		
 	}
@@ -31,5 +31,7 @@ public class PackerTest {
 	@Test
 	public void testPackerWithItemBadFomarttely() throws FileNotFoundException, APIException {
 		Packer.pack(getResourceFolder() + "/itemsWithBadFormatedNumbers.txt");
+		
+		
 	}
 }
