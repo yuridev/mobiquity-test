@@ -1,14 +1,6 @@
 .classpath
-.idea/$CACHE_FILE$
-.idea/$PRODUCT_WORKSPACE_FILE$
-.idea/.name
-.idea/compiler.xml
-.idea/inspectionProfiles/profiles_settings.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/workspace.xml
 .project
 .settings/org.eclipse.jdt.apt.core.prefs
 .settings/org.eclipse.jdt.core.prefs
 .settings/org.eclipse.m2e.core.prefs
-target/*
+/target/*
